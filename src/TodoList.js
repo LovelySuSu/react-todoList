@@ -1,31 +1,29 @@
 import React, { Component } from 'react';
 import 'antd/dist/antd.css';
 import { Input, Button,List } from 'antd';
+import store from './store'
+import { getInputChangeAction,addListItem,deleteListItem } from "./store/actionCreators";
 
 class TodoList extends Component {
     constructor (props) {
         super(props);
-        this.state = {
-            inputValue:'',
-            list:[]
-        }
+        this.state = store.getState();
+        store.subscribe(this.handleStoreChange.bind(this));
+    }
+    handleStoreChange() {
+        this.setState(store.getState())
     }
     handleInputChange (e) {
-        this.setState({
-            inputValue:e.target.value
-        })
+        const action = getInputChangeAction(e.target.value)
+        store.dispatch(action);
     }
     addItem () {
-        this.setState({
-            inputValue: '',
-            list:[...this.state.list,this.state.inputValue]
-        })
+        const action = addListItem();
+        store.dispatch(action);
     }
     deleteItem (index) {
-        let newList = [...this.state.list].splice(index,1);
-        this.setState({
-            list:newList
-        })
+        const action = deleteListItem(index);
+        store.dispatch(action);
     }
     render() {
         return (
