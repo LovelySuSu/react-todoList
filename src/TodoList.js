@@ -3,6 +3,7 @@ import 'antd/dist/antd.css';
 import { Input, Button,List } from 'antd';
 import store from './store'
 import { getInputChangeAction,addListItem,deleteListItem } from "./store/actionCreators";
+import ReactPullLoad, { STATS } from 'react-pullload'
 
 class TodoList extends Component {
     constructor (props) {
@@ -30,7 +31,7 @@ class TodoList extends Component {
           <div>
               <Input
                   value={this.state.inputValue}
-                  placeholder='输入你的任务清单'
+                  placeholder='lalalal输入你的任务清单'
                   style={{width:300,marginRight:10}}
                   onChange={this.handleInputChange.bind(this)}
               />

@@ -6,6 +6,7 @@ import store from './store'
 import { getInputChangeAction,addListItem,deleteListItem } from "./store/actionCreators";
 
 
+
 const OtherTodoList = (props) => {
     return (
         <div>
@@ -33,6 +34,8 @@ const mapStateToProps  = (state) => {
         list:state.list
     }
 }
+
+
 
 const mapDispatchToProps = (dispatch) => {
     return {
